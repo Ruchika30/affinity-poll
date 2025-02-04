@@ -1,7 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react"
-import { MemoryRouter } from "react-router-dom"
+import { MemoryRouter, Routes, Route } from "react-router-dom"
 import LandingPage from "../index"
 import { PollOne } from "../data"
+import PollTwo from "../../PollTwo"
 
 jest.mock("../../../__mocks__/matchMedia")
 jest.mock("../../../shared/PollWidget", () => ({
@@ -70,15 +71,24 @@ describe("LandingPage Mobile view", () => {
 
 	it("navigates to Poll Set 2 when clicked", () => {
 		render(
-			<MemoryRouter>
-				<LandingPage />
+			<MemoryRouter initialEntries={["/"]}>
+				<Routes>
+					<Route path="/" element={<LandingPage />} />
+					<Route path="/poll-two" element={<PollTwo />} />
+				</Routes>
 			</MemoryRouter>
 		)
 
 		const hamburgerButton = screen.getByRole("button")
+		const navLink = screen.getByText("Poll Set 2")
+
 		fireEvent.click(hamburgerButton)
 
-		const pollSet2Link = screen.getByText("Poll Set 2")
-		expect(pollSet2Link).toBeInTheDocument()
+		expect(navLink).toBeInTheDocument()
+		fireEvent.click(navLink)
+
+		expect(
+			screen.getByText("What's your favorite type of cuisine?")
+		).toBeInTheDocument()
 	})
 })
