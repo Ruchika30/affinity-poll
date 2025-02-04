@@ -71,12 +71,14 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 											</div>
 										) : (
 											<button
+												name={option.text}
 												className={`w-full p-2 rounded-xl border transition-transform duration-300 ${
 													option.id === item.selectedOption
 														? "bg-blue-600 text-white "
 														: "bg-gray-100 text-black hover:bg-gray-300"
 												}`}
 												onClick={() => handleVote(item.id, option.id)}
+												disabled={!!pollData.length}
 											>
 												{option.text}
 											</button>

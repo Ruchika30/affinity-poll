@@ -24,7 +24,7 @@ describe("Layout Component", () => {
 	})
 
 	test("toggles sidebar in mobile view", () => {
-		resizeWindow(375) // Mobile view
+		resizeWindow(375)
 
 		render(
 			<MemoryRouter>
@@ -33,7 +33,7 @@ describe("Layout Component", () => {
 		)
 
 		const menuButton = screen.getByRole("button")
-		fireEvent.click(menuButton) // Open sidebar
+		fireEvent.click(menuButton)
 
 		expect(screen.getByTestId("overlay")).toBeInTheDocument()
 
