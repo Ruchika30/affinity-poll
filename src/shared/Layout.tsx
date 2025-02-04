@@ -14,13 +14,18 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 		<div className="min-h-screen bg-gray-50 p-4 relative">
 			{/* Mobile Header */}
 			<div className="flex items-center text-center justify-between md:hidden bg-gray-200 p-4 rounded-xl shadow-md">
-				<h2 className="text-2xl font-bold ">{title}</h2>
-				<button onClick={() => setIsOpen((prev) => !prev)}>
+				<h2 className="text-2xl font-bold" data-testid="mobile-title">
+					{title}
+				</h2>
+				<button
+					data-testid="mobile-header"
+					onClick={() => setIsOpen((prev) => !prev)}
+				>
 					{isOpen ? <X size={28} /> : <Menu size={28} />}
 				</button>
 			</div>
 
-			<div className="flex">
+			<div className="flex ">
 				{/* Sidebar */}
 				<div
 					className={`fixed top-0 left-0 h-full w-64 bg-gray-200 text-gray-700 p-4 rounded-r-xl shadow-md transform transition-transform duration-300 
@@ -28,15 +33,19 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 							isOpen ? "translate-x-0" : "-translate-x-full"
 						}`}
 				>
-					<h2 className="text-3xl font-bold hidden md:block mb-4">{title}</h2>
+					<h2
+						className="text-3xl font-bold hidden md:block mb-4"
+						data-testid="desktop-title"
+					>
+						{title}
+					</h2>
 
 					<div className="flex flex-col gap-4">
 						<NavLink
 							to="/"
 							className={({ isActive }) =>
-								`p-4 rounded-md font-bold ${
-									isActive ? "bg-green-500 text-white" : "bg-slate-400"
-								}`
+								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-400"}`.trim() ||
+								"p-4 rounded-md font-bold bg-slate-400"
 							}
 							onClick={() => setIsOpen(false)}
 						>
@@ -46,9 +55,8 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 						<NavLink
 							to="/poll-two"
 							className={({ isActive }) =>
-								`p-4 rounded-md font-bold ${
-									isActive ? "bg-green-500 text-white" : "bg-slate-400"
-								}`
+								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-400"}`.trim() ||
+								"p-4 rounded-md font-bold bg-slate-400"
 							}
 							onClick={() => setIsOpen(false)}
 						>
@@ -68,6 +76,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 				<div
 					className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
 					onClick={() => setIsOpen(false)}
+					data-testid="overlay"
 				></div>
 			)}
 		</div>

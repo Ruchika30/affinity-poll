@@ -1,6 +1,6 @@
 import "./App.css"
 import "./index.css"
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom"
 import LandingPage from "./components/LandingScreen"
 import PollTwo from "./components/PollTwo"
 
