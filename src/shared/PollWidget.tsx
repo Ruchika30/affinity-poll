@@ -52,13 +52,14 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 
 								return (
 									<li key={option.id} className="mb-2">
-										{item.voted ? ( // Show result only if voted for this question
-											<div className="w-full bg-gray-200 rounded-xl relative">
+										{/* Show result only if voted for this question */}
+										{item.voted ? (
+											<div className="w-full bg-gray-200 text-white rounded-xl relative">
 												<div
-													className={`p-2 text-sm text-left h-10 ${
+													className={`p-2 text-sm text-left h-11 ${
 														option.id === item.selectedOption
-															? "bg-blue-600"
-															: "bg-blue-400"
+															? "bg-sky-500 rounded-xl  "
+															: "bg-sky-200 rounded-xl"
 													}`}
 													style={{ width: `${percentage}%` }}
 												></div>
@@ -72,7 +73,7 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 											<button
 												className={`w-full p-2 rounded-xl border transition-transform duration-300 ${
 													option.id === item.selectedOption
-														? "bg-blue-600 text-white"
+														? "bg-blue-600 text-white "
 														: "bg-gray-100 text-black hover:bg-gray-300"
 												}`}
 												onClick={() => handleVote(item.id, option.id)}

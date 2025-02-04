@@ -44,8 +44,8 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 						<NavLink
 							to="/"
 							className={({ isActive }) =>
-								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-400"}`.trim() ||
-								"p-4 rounded-md font-bold bg-slate-400"
+								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-300"}`.trim() ||
+								"p-4 rounded-md font-bold bg-slate-300"
 							}
 							onClick={() => setIsOpen(false)}
 						>
@@ -55,8 +55,8 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 						<NavLink
 							to="/poll-two"
 							className={({ isActive }) =>
-								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-400"}`.trim() ||
-								"p-4 rounded-md font-bold bg-slate-400"
+								`p-4 rounded-md font-bold ${isActive ? "bg-green-500 text-white" : "bg-slate-300"}`.trim() ||
+								"p-4 rounded-md font-bold bg-slate-300"
 							}
 							onClick={() => setIsOpen(false)}
 						>
