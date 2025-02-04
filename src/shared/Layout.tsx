@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 						}`}
 				>
 					<h2
-						className="text-3xl font-bold hidden md:block mb-4"
+						className="text-3xl font-bold hidden md:block mb-4 text-center"
 						data-testid="desktop-title"
 					>
 						{title}
