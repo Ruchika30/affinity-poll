@@ -53,15 +53,18 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 								return (
 									<li key={option.id} className="mb-2">
 										{item.voted ? ( // Show result only if voted for this question
-											<div className="w-full bg-gray-200 rounded-xl overflow-hidden">
+											<div className="w-full bg-gray-200 rounded-xl relative">
 												<div
-													className={`p-2 text-sm text-left ${
+													className={`p-2 text-sm text-left h-10 ${
 														option.id === item.selectedOption
-															? "bg-blue-600 text-white"
-															: "bg-blue-400 text-white"
+															? "bg-blue-600"
+															: "bg-blue-400"
 													}`}
 													style={{ width: `${percentage}%` }}
-												>
+												></div>
+
+												{/* Text outside the progress bar */}
+												<div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-black font-semibold">
 													{option.text} - {percentage}% ({option.votes} votes)
 												</div>
 											</div>
