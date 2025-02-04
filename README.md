@@ -28,3 +28,8 @@ The app is ready to be deployed!
 - Jest, RTL for tests
 - lucide-react for icons
 - Eslint, prettier for code formatting
+
+
+###### `How to add new poll widget`
+Can be added as below
+<img width="490" alt="Screenshot 2025-02-04 at 4 06 29 PM" src="https://github.com/user-attachments/assets/f509382d-06af-4740-b5b3-6ec46f1f8863" />
