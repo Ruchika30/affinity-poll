@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
-import Layout from "../Layout"
+import Layout from "../layout"
 
 const resizeWindow = (width: number) => {
 	window.innerWidth = width

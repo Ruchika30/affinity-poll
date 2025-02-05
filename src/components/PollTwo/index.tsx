@@ -1,7 +1,7 @@
 import PollWidget from "../../shared/widget/poll"
 import React from "react"
 import { PollTwo } from "../data"
-import Layout from "../../shared/Layout"
+import Layout from "../../shared/components/layout"
 
 /*  This is Poll two */
 
