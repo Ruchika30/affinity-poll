@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { IQuestion } from "../components/LandingScreen/types"
+import { IQuestion } from "../../components/LandingScreen/types"
 
 interface PollScreenProps {
 	pollId: string
@@ -8,6 +8,19 @@ interface PollScreenProps {
 
 const Poll: React.FC<PollScreenProps> = ({ pollId, questions }) => {
 	const localStorageKey = `pollData-${pollId}`
+
+	useEffect(() => {
+		// Clear localStorage data on page refresh
+		window.addEventListener("beforeunload", () => {
+			localStorage.removeItem(localStorageKey)
+		})
+
+		return () => {
+			window.removeEventListener("beforeunload", () => {
+				localStorage.removeItem(localStorageKey)
+			})
+		}
+	}, [localStorageKey])
 
 	const [pollData, setPollData] = useState<IQuestion[]>(() => {
 		const savedData = localStorage.getItem(localStorageKey)
@@ -26,7 +39,7 @@ const Poll: React.FC<PollScreenProps> = ({ pollId, questions }) => {
 
 	useEffect(() => {
 		localStorage.setItem(localStorageKey, JSON.stringify(pollData))
-	}, [pollData])
+	}, [pollData, localStorageKey])
 
 	const handleVote = (questionId: number, optionId: string) => {
 		/* Increasing existing vote count by 1  */

@@ -5,7 +5,7 @@ import { PollOne } from "../data"
 import PollTwo from "../../PollTwo"
 
 jest.mock("../../../__mocks__/matchMedia")
-jest.mock("../../../shared/PollWidget", () => ({
+jest.mock("../../../shared/widget/poll", () => ({
 	__esModule: true,
 	default: ({ questions }: { questions: any[] }) => (
 		<div>

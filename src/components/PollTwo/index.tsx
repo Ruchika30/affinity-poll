@@ -1,4 +1,4 @@
-import PollWidget from "../../shared/PollWidget"
+import PollWidget from "../../shared/widget/poll"
 import React from "react"
 import { PollTwo } from "../LandingScreen/data"
 import Layout from "../../shared/Layout"
