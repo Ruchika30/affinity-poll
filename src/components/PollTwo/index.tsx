@@ -1,6 +1,6 @@
 import PollWidget from "../../shared/widget/poll"
 import React from "react"
-import { PollTwo } from "../LandingScreen/data"
+import { PollTwo } from "../data"
 import Layout from "../../shared/Layout"
 
 /*  This is Poll two */
@@ -8,6 +8,7 @@ import Layout from "../../shared/Layout"
 const LandingPage: React.FC = () => {
 	return (
 		<>
+			{/* Passing questions for poll as prop */}
 			<Layout title="Affinity">
 				<PollWidget questions={PollTwo} pollId="#4721" />
 			</Layout>

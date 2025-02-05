@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { IQuestion } from "../../components/LandingScreen/types"
+import { IQuestion } from "../../components/types"
 
 interface PollScreenProps {
 	pollId: string

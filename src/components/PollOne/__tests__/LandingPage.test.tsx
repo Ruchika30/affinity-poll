@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import { MemoryRouter, Routes, Route } from "react-router-dom"
 import LandingPage from "../index"
-import { PollOne } from "../data"
+import { PollOne } from "../../data"
 import PollTwo from "../../PollTwo"
 
 jest.mock("../../../__mocks__/matchMedia")

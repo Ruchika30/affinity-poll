@@ -1,7 +1,7 @@
 import React from "react"
 import { render, screen, fireEvent } from "@testing-library/react"
 import Poll from "../widget/poll"
-import { IQuestion } from "../../components/LandingScreen/types"
+import { IQuestion } from "../../components/types"
 
 const mockQuestions: IQuestion[] = [
 	{
