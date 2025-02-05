@@ -1,10 +1,11 @@
-### Getting Started 
-
+### Getting Started
 
 ###### Follow the below steps
 
 In the project directory, you can run:
+
 ##### `npm install`
+
 ##### `npm start`
 
 Runs the app in the development mode.\
@@ -22,6 +23,7 @@ The build is minified and the filenames include the hashes.\
 The app is ready to be deployed!
 
 ###### `Tech stack used:`
+
 - ReactJS
 - Typescript
 - Tailwind for css
@@ -29,7 +31,18 @@ The app is ready to be deployed!
 - lucide-react for icons
 - Eslint, prettier for code formatting
 
-
 ###### `How to add new poll widget`
-Can be added as below
-<img width="490" alt="Screenshot 2025-02-04 at 4 06 29 PM" src="https://github.com/user-attachments/assets/f509382d-06af-4740-b5b3-6ec46f1f8863" />
+
+- We can pass questions as props
+- Questions is an array of objects having below structure
+- Json api for the sane can be found in data.ts
+
+  ```
+  export interface IQuestion {
+  id: number
+  qsn: string
+  options: Option[]
+  voted?: boolean
+  selectedOption?: string
+  }
+  ```
