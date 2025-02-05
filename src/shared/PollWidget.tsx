@@ -1,23 +1,37 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IQuestion } from "../components/LandingScreen/types"
 
 interface PollScreenProps {
+	pollId: string
 	questions: IQuestion[]
 }
 
-const Poll: React.FC<PollScreenProps> = ({ questions }) => {
-	const [pollData, setPollData] = useState<IQuestion[]>(
-		questions.map((q) => ({
+const Poll: React.FC<PollScreenProps> = ({ pollId, questions }) => {
+	const localStorageKey = `pollData-${pollId}`
+
+	const [pollData, setPollData] = useState<IQuestion[]>(() => {
+		const savedData = localStorage.getItem(localStorageKey)
+
+		if (savedData) {
+			return JSON.parse(savedData)
+		}
+
+		return questions.map((q) => ({
 			...q,
 			options: q.options.map((opt) => ({ ...opt, votes: opt.votes || 0 })),
 			voted: false,
 			selectedOption: ""
 		}))
-	)
+	})
+
+	useEffect(() => {
+		localStorage.setItem(localStorageKey, JSON.stringify(pollData))
+	}, [pollData])
 
 	const handleVote = (questionId: number, optionId: string) => {
+		/* Increasing existing vote count by 1  */
 		const updatedPollData = pollData.map((q) => {
-			if (q.id === questionId && !q.voted) {
+			if (q.id === questionId) {
 				return {
 					...q,
 					voted: true,
@@ -41,7 +55,7 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 				return (
 					<div
 						key={item.id}
-						className="bg-white p-6 rounded-lg text-lg shadow-md w-full text-center"
+						className="bg-white p-6 rounded-lg text-lg shadow-md w-full text-center mb-4"
 					>
 						<h2 className="text-2xl font-bold mb-4">{item.qsn}</h2>
 						<ul>
@@ -52,19 +66,17 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 
 								return (
 									<li key={option.id} className="mb-2">
-										{/* Show result only if voted for this question */}
 										{item.voted ? (
 											<div className="w-full bg-gray-200 text-white rounded-xl relative">
 												<div
-													className={`p-2 text-sm text-left h-11 ${
+													className={`p-2 text-sm text-left h-11 transition-all duration-500 ease-in-out ${
 														option.id === item.selectedOption
-															? "bg-sky-500 rounded-xl  "
+															? "bg-sky-500 rounded-xl"
 															: "bg-sky-200 rounded-xl"
 													}`}
 													style={{ width: `${percentage}%` }}
 												></div>
 
-												{/* Text outside the progress bar */}
 												<div className="absolute left-2 top-1/2 transform -translate-y-1/2 text-black font-semibold">
 													{option.text} - {percentage}% ({option.votes} votes)
 												</div>
@@ -72,13 +84,8 @@ const Poll: React.FC<PollScreenProps> = ({ questions }) => {
 										) : (
 											<button
 												name={option.text}
-												className={`w-full p-2 rounded-xl border transition-transform duration-300 ${
-													option.id === item.selectedOption
-														? "bg-blue-600 text-white "
-														: "bg-gray-100 text-black hover:bg-gray-300"
-												}`}
+												className="w-full p-2 rounded-xl border transition-transform duration-300 bg-gray-100 text-black hover:bg-gray-300"
 												onClick={() => handleVote(item.id, option.id)}
-												disabled={!!pollData.length}
 											>
 												{option.text}
 											</button>

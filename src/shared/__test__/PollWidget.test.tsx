@@ -17,7 +17,7 @@ const mockQuestions: IQuestion[] = [
 
 describe("Poll Component", () => {
 	it("renders the poll questions and options correctly", () => {
-		render(<Poll questions={mockQuestions} />)
+		render(<Poll questions={mockQuestions} pollId="#4321" />)
 		const question1 = screen.getByText("What is your favorite color?")
 		expect(question1).toBeInTheDocument()
 
@@ -30,7 +30,7 @@ describe("Poll Component", () => {
 	})
 
 	it("allows voting red option and updates the vote count correctly", () => {
-		render(<Poll questions={mockQuestions} />)
+		render(<Poll questions={mockQuestions} pollId="#4321" />)
 		const optionRedButton = screen.getByRole("button", { name: "Red" })
 		fireEvent.click(optionRedButton)
 		const updatedOptionRed = screen.getByText("Red")
@@ -38,7 +38,7 @@ describe("Poll Component", () => {
 	})
 
 	it("allows voting blue option and updates the vote count correctly", () => {
-		render(<Poll questions={mockQuestions} />)
+		render(<Poll questions={mockQuestions} pollId="#4321" />)
 		const optionRedButton = screen.getByRole("button", { name: "Blue" })
 		fireEvent.click(optionRedButton)
 		const updatedOptionRed = screen.getByText("Blue")
@@ -46,7 +46,7 @@ describe("Poll Component", () => {
 	})
 
 	it("disables voting after a vote has been cast", () => {
-		render(<Poll questions={mockQuestions} />)
+		render(<Poll questions={mockQuestions} pollId="#4321" />)
 		const optionRedButton = screen.getByRole("button", { name: "Red" })
 		fireEvent.click(optionRedButton)
 

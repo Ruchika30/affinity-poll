@@ -9,7 +9,7 @@ const LandingPage: React.FC = () => {
 	return (
 		<>
 			<Layout title="Affinity">
-				<PollWidget questions={PollTwo} />
+				<PollWidget questions={PollTwo} pollId="#4721" />
 			</Layout>
 		</>
 	)
